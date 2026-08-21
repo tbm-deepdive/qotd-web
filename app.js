@@ -34,6 +34,7 @@ if( typeof process.env.BRANDING == "string" && process.env.BRANDING.length>0  ){
     BRANDING = process.env.BRANDING;
 }
 
+
 //================================================================================================
 // Express setup
 
@@ -65,10 +66,10 @@ function newLocalSession() {
 //================================================================================================
 // service management
 
-const anomalyConfig = { 
+const anomalyConfig = {
     "url": process.env.ANOMALY_GENERATOR_URL,
     "logLevel": process.env.LOG_LEVEL
-}
+};
 
 if( typeof process.env.POLLING_FREQUENCY != 'undefined' && Number.parseInt(process.env.POLLING_FREQUENCY) ) {
     anomalyConfig.pollingFrequency = parseInt(process.env.POLLING_FREQUENCY);
@@ -79,7 +80,6 @@ if( typeof process.env.POLLING_FREQUENCY != 'undefined' && Number.parseInt(proce
 serviceManager.config(anomalyConfig, app);
 
 utils = serviceManager.utils;
-
 
 //================================================================================================
 // Instana web app token
@@ -109,6 +109,7 @@ function getInstanaSnippet(req){
             return INSTANA_HEADER;
     }    
 }
+
 
 // if (typeof INSTANA_REPORTING_URL != 'undefined' && INSTANA_REPORTING_URL != ""
 //     && typeof INSTANA_ENUM_MIN_JS_URL != 'undefined' && INSTANA_ENUM_MIN_JS_URL != ""
@@ -557,4 +558,8 @@ const buildInfo = fs.readFileSync('build.txt', 'utf8').trim();
 appService = app.listen(app.get('port'), '0.0.0.0', function () {
     console.log(`Starting ${appName} v${appVersion}, ${buildInfo} on port ${app.get('port')}`);
 });
+
+
+
+
 
