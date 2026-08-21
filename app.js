@@ -67,9 +67,11 @@ function newLocalSession() {
 // service management
 
 const anomalyConfig = {
-    "url": process.env.ANOMALY_GENERATOR_URL,
     "logLevel": process.env.LOG_LEVEL
 };
+if( typeof process.env.ANOMALY_GENERATOR_URL == 'string' && process.env.ANOMALY_GENERATOR_URL.length > 0 ) {
+    anomalyConfig.url = process.env.ANOMALY_GENERATOR_URL;
+}
 
 if( typeof process.env.POLLING_FREQUENCY != 'undefined' && Number.parseInt(process.env.POLLING_FREQUENCY) ) {
     anomalyConfig.pollingFrequency = parseInt(process.env.POLLING_FREQUENCY);

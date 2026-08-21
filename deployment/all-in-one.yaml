@@ -54,8 +54,6 @@ spec:
               value: ""
             - name: INSTANA_KEY
               value: ""
-            - name: ANOMALY_GENERATOR_URL
-              value: ""
             - name: QUOTE_SVC
               value: "qotd-quote.qotd.svc.cluster.local:3001"
             - name: AUTHOR_SVC
